@@ -71,7 +71,7 @@ export const StakeContractInteraction = ({ address }: { address?: string }) => {
       >
         <div className="flex flex-col w-full items-center">
           <p className="block text-2xl mt-0 mb-2 font-semibold">Staker Contract</p>
-          <Address address={address} size="xl" />
+          <Address address={address as `0x${string}`} size="xl" />
         </div>
         <div className="flex items-start justify-around w-full">
           <div className="flex flex-col items-center justify-center w-1/2">
