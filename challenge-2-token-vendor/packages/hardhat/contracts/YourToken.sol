@@ -7,6 +7,6 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract YourToken is ERC20 {
   constructor() ERC20("Amd Token", "AMDT") {
-    _mint(0x573747e210a4C329FE2C418C2Bb629CD3e2c915b, 1000 * 10 ** 18);
+    _mint(msg.sender, 1000 * 10 ** 18);
   }
 }
