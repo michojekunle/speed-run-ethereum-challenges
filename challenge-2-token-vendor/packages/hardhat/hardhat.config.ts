@@ -61,6 +61,12 @@ const config: HardhatUserConfig = {
     arbitrumSepolia: {
       url: `https://arb-sepolia.g.alchemy.com/v2/${providerApiKey}`,
       accounts: [deployerPrivateKey],
+      verify: {
+        etherscan: {
+          apiUrl: "https://api-sepolia.arbiscan.org",
+          apiKey: process.env.HALLO_ARBI_SCAN_API_KEY,
+        },
+      },
     },
     liskSepolia: {
       url: "https://rpc.sepolia-api.lisk.com",
@@ -105,6 +111,12 @@ const config: HardhatUserConfig = {
     baseSepolia: {
       url: "https://sepolia.base.org",
       accounts: [deployerPrivateKey],
+      verify: {
+        etherscan: {
+          apiUrl: "https://api-sepolia.basescan.org",
+          apiKey: process.env.HALLO_BASE_SCAN_API_KEY,
+        },
+      },
     },
     scrollSepolia: {
       url: "https://sepolia-rpc.scroll.io",
@@ -133,6 +145,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://sepolia-blockscout.lisk.com/api",
           browserURL: "https://sepolia-blockscout.lisk.com",
+        },
+      },
+      {
+        network: "baseSepolia",
+        chainId: 84532,
+        urls: {
+          apiURL: "https://base-sepolia.blockscout.com/api",
+          browserURL: "https://base-sepolia.blockscout.com",
         },
       },
     ],
