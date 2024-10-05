@@ -21,7 +21,7 @@ const etherscanApiKey = process.env.ETHERSCAN_API_KEY || "DNXJA8RX2Q3VZ4URQIWP7Z
 
 const config: HardhatUserConfig = {
   solidity: {
-    version: "0.8.4",
+    version: "0.8.17",
     settings: {
       optimizer: {
         enabled: true,
@@ -30,7 +30,7 @@ const config: HardhatUserConfig = {
       },
     },
   },
-  defaultNetwork: "arbitrumSepolia",
+  defaultNetwork: "localhost",
   namedAccounts: {
     deployer: {
       // By default, it will take the first Hardhat account as the deployer
@@ -61,22 +61,6 @@ const config: HardhatUserConfig = {
     arbitrumSepolia: {
       url: `https://arb-sepolia.g.alchemy.com/v2/${providerApiKey}`,
       accounts: [deployerPrivateKey],
-      verify: {
-        etherscan: {
-          apiUrl: "https://api-sepolia.arbiscan.org",
-          apiKey: process.env.HALLO_ARBI_SCAN_API_KEY,
-        },
-      },
-    },
-    liskSepolia: {
-      url: "https://rpc.sepolia-api.lisk.com",
-      accounts: [deployerPrivateKey],
-      verify: {
-        etherscan: {
-          apiUrl: "https://rpc.sepolia-api.lisk.com",
-          apiKey: "123",
-        },
-      },
     },
     optimism: {
       url: `https://opt-mainnet.g.alchemy.com/v2/${providerApiKey}`,
@@ -117,12 +101,6 @@ const config: HardhatUserConfig = {
     baseSepolia: {
       url: "https://sepolia.base.org",
       accounts: [deployerPrivateKey],
-      verify: {
-        etherscan: {
-          apiUrl: "https://api-sepolia.basescan.org",
-          apiKey: process.env.HALLO_BASE_SCAN_API_KEY,
-        },
-      },
     },
     scrollSepolia: {
       url: "https://sepolia-rpc.scroll.io",
@@ -144,24 +122,6 @@ const config: HardhatUserConfig = {
   // configuration for harhdat-verify plugin
   etherscan: {
     apiKey: `${etherscanApiKey}`,
-    customChains: [
-      {
-        network: "liskSepolia",
-        chainId: 4202,
-        urls: {
-          apiURL: "https://sepolia-blockscout.lisk.com/api",
-          browserURL: "https://sepolia-blockscout.lisk.com",
-        },
-      },
-      {
-        network: "baseSepolia",
-        chainId: 84532,
-        urls: {
-          apiURL: "https://base-sepolia.blockscout.com/api",
-          browserURL: "https://base-sepolia.blockscout.com",
-        },
-      },
-    ],
   },
   // configuration for etherscan-verify from hardhat-deploy plugin
   verify: {
